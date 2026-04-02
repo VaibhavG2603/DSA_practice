@@ -13,11 +13,21 @@ void traverseLinked(struct node *ptr)
         ptr = ptr->next;
     }
 }
- struct node*DeleteFirst(struct node*head){
+ struct node*DeleteInBetween(struct node*head,int data){
     
-     struct node*temp=head;
-     head=head->next;
-     free(temp);
+     struct node*p=head;
+     struct node*q=head->next;
+     while(q->data!=data && q->next!=NULL){
+        p=p->next;
+        q=q->next;
+     }
+     if (q->data==data)
+     {
+         p->next=q->next;
+        free(q);
+     }
+     
+    
     return head;
 
  }
@@ -38,7 +48,7 @@ int main()
     printf("Before Deletion\n");
     traverseLinked(head);
     printf("After Deletion\n");
-    head=DeleteFirst(head);
+    head=DeleteInBetween(head,5);
     traverseLinked(head);
     
     return 0;
