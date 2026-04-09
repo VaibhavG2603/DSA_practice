@@ -78,7 +78,7 @@ int parenthesisMatch(char *exp)
         {
             push(sp, exp[i]);
         }
-        else if (exp[i] == '('|| exp[i] == '[' ||exp[i] == '{')
+        else if (exp[i] == ')'|| exp[i] == ']' ||exp[i] == '}')
         {
             if (isEmpty(sp))
             {
